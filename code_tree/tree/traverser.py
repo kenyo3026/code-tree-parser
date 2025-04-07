@@ -4,7 +4,7 @@ from typing import Union, Tuple, Dict
 import tree_sitter
 
 
-class DFSTraversal():
+class DFSTraverser():
     """ The base class of Depth First Search Traversal. """
     def __init__(self, trace_strategy:Union[Tuple[FunctionType, Dict], FunctionType]=None, store_strategy:str=None, step_threshold:int=3000):
         self.total_step = 0

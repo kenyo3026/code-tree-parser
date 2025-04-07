@@ -11,7 +11,7 @@ import tree_sitter
 from tree_sitter import Language, Parser
 
 from .utils import remove_comments_and_docstrings
-from .traversal import DFSTraversal
+from .traverser import DFSTraverser
 
 MIN_SYSTEM_RECURSION_LIMIT = 20000
 
@@ -96,5 +96,5 @@ class CodeParser:
             code = remove_comments_and_docstrings(code, self.lang)
         cursor = self.parse_code(code)
 
-        traversal = DFSTraversal(trace_strategy=trace_strategy, store_strategy=store_strategy)
+        traversal = DFSTraverser(trace_strategy=trace_strategy, store_strategy=store_strategy)
         return traversal.traverse(cursor)
