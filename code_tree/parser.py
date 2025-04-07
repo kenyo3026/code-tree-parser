@@ -2,6 +2,7 @@ import os
 import sys
 import importlib
 import subprocess
+import charset_normalizer
 from dataclasses import dataclass
 from importlib.metadata import version
 from typing import Union
@@ -71,7 +72,10 @@ class CodeParser:
     def parse_code(self, code:Union[str, bytes]):
 
         if isinstance(code, str) and os.path.isfile(code):
-            with open(code, 'r', encoding='utf8') as f:
+            result = charset_normalizer.from_path(code).best()
+            detected_encoding = result.encoding or 'utf-8'
+
+            with open(code, 'r', encoding=detected_encoding) as f:
                 code = f.read()
 
         if isinstance(code, str):

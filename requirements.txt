@@ -1,2 +1,3 @@
 tree-sitter
 tree-sitter-c
+charset_normalizer
